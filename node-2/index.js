@@ -19,7 +19,9 @@ function respond(req, res) {
     }
 
     // Hantera ev querystring
+
     let params = url.parse(req.url, true)
+    console.log(params)
 
     // vår information finns i objektet params.query
     if (params.query.userID == user.userID && params.query.password == user.password) {
@@ -28,6 +30,7 @@ function respond(req, res) {
         res.writeHead(403)
         res.write("Not authorized")
     }
+    console.log(req.headers.host + req.url)
 
     res.end()
 

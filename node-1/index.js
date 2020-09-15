@@ -16,7 +16,8 @@ https.get(url, (res) => {
 
 function showTopTen() {
     let server = http.createServer((req, res) => {
-        let data = '<html><head><meta charset="utf-8"><ol>'
+        let data = '<html><head><ol>'
+
         for (i = 0; i < 10; i++) {
             data += `
             <li>
@@ -26,7 +27,8 @@ function showTopTen() {
             `
         }
         data += '</ol>'
-        res.end(data, 'utf-8')
+
+        res.end(data, 'latin1')
     })
     server.listen(3000, () => {
         console.log("Server now listening on 3000")
