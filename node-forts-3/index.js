@@ -1,15 +1,14 @@
-let process = require('process')
-let os = require('os')
-
-let osProperties = [
-    os.cpus(),
-    os.hostname(),
-    os.platform()
-]
+const process = require("process");
+const fs = require("fs");
+const randomWords = require("random-words");
 
 // Hämta ut en array av argument från kommandoraden, inkl node.
-let argument = process.argv
+let argument = process.argv;
+let fileName = argument[2];
 
-let funktion = osProperties[argument[2] - 1]
+let words = randomWords(5000);
 
-console.log(funktion)
+fs.writeFile(fileName, words, { flag: "w" }, (err) => {
+    if (err) throw err;
+    console.log(`Filen ${fileName} är skapad.`);
+});
