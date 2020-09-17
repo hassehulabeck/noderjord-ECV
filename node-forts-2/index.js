@@ -4,12 +4,18 @@ let url = require("url");
 
 let server = http.createServer((req, res) => {
     let year = url.parse(req.url);
+    console.log(year)
     let y = year.pathname.replace("/", "");
-    console.log(y);
+
 
     let q = quotes.getQuoteByYear(y, y);
-    res.write(q[0].quote);
-    res.write(q[0].movie + " " + q[0].type);
+    if (q.length > 0) {
+        res.write(q[0].quote);
+        res.write(q[0].movie + " " + q[0].type);
+
+    } else {
+        res.write("Ogiltigt år / hittade inga filmer")
+    }
     res.end();
 });
 
