@@ -8,7 +8,11 @@ let fileName = argument[2];
 
 let words = randomWords(5000);
 
-fs.writeFile(fileName, words, { flag: "w" }, (err) => {
+let options = {
+    flag: "w",
+};
+
+fs.writeFile(fileName, words, options, (err) => {
     if (err) throw err;
     console.log(`Filen ${fileName} är skapad.`);
 });
