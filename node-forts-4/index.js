@@ -13,10 +13,13 @@ function calculateValue() {
     let facecards = ["J", "Q", "K"];
 
     hand.forEach((card) => {
-        cardValue = card.slice(0, 1);
-        if (cardValue >= 2 && cardValue <= 10) {
+        let cardValue = card.slice(0, 1);
+        console.log(cardValue)
+        if (cardValue >= 2 && cardValue <= 9) {
             value += Number(cardValue);
         } else if (facecards.includes(cardValue)) {
+            value += 10;
+        } else if (cardValue == 1) {
             value += 10;
         } else {
             value += 11;
